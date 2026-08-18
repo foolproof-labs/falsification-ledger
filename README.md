@@ -144,7 +144,7 @@ A falsification report is the machine-readable evidence produced by an
 independent check (null-model randomization, OOS rank IC, FDR correction,
 protocol deviation, effect CI, cost sensitivity, ...). The contract:
 
-- schema: [`schema/falsification-report.schema.json`](schema/falsification-report.schema.json)
+- schema: [`schema/falsification-report.schema.json`](https://github.com/foolproof-labs/falsification-ledger/blob/main/schema/falsification-report.schema.json)
   (draft 2020-12, `additionalProperties: false`, fail-closed);
 - content ID: `sha256:` over `domain-prefix || 0x00 || canonical JSON` —
   the same report always yields the same ID, a one-field change yields a
