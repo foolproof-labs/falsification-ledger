@@ -6,7 +6,7 @@ then adjudicate honestly and measure your hit rate against a random
 baseline. Python 3.11+, one dependency (`jsonschema`), Windows / Linux /
 macOS.
 
-**Status:** v0.1 — alpha. The ledger semantics are distilled from a
+**Status:** v0.1 鈥?alpha. The ledger semantics are distilled from a
 production research pipeline, but this standalone package is new: expect the
 CLI and schemas to shift before v1.0.
 
@@ -24,7 +24,7 @@ write down, before seeing evidence:
 - what evidence would **kill** your claim (the falsification contract).
 
 Then it keeps the receipts. Every event lands in an append-only JSONL
-**hash chain** — any edit after the fact is detected by `fl verify` — and
+**hash chain** 鈥?any edit after the fact is detected by `fl verify` 鈥?and
 the report answers the only question that matters: *do your pre-registered
 beliefs actually hit, or is your hit rate indistinguishable from a random
 baseline?* (Wilson 95% CI vs the most common actual verdict.)
@@ -34,7 +34,7 @@ baseline?* (Wilson 95% CI vs the most common actual verdict.)
 **Research is a promise; the ledger keeps it.**
 
 - **Falsifiability is the default, not the exception.** Popper's criterion
-  — a claim is scientific only if something could count against it — is
+  鈥?a claim is scientific only if something could count against it 鈥?is
   usually invoked as a lecture. Here it is a required JSON field
   (`falsification_contract` on `preregister`).
 - **Pre-analysis plans have known costs and benefits.** [Olken (2015),
@@ -48,10 +48,10 @@ baseline?* (Wilson 95% CI vs the most common actual verdict.)
   argue for layered pre-registration; `source_type` (paper / business /
   cross_domain / pipeline / other) exists so confirmatory and exploratory
   claims are never mixed in the same bucket.
-- **Finance can become scientific.** [López de Prado (2023), *Causal Factor
+- **Finance can become scientific.** [L贸pez de Prado (2023), *Causal Factor
   Investing*](https://www.cambridge.org/core/elements/causal-factor-investing/9AFE270D7099B787B8FD4F4CBADE0C6E)
   asks whether factor investing can become a science; this ledger is one
-  concrete answer — evidence with a chain of custody, adjudicated against a
+  concrete answer 鈥?evidence with a chain of custody, adjudicated against a
   pre-registered expectation.
 - **Automated research needs machine-checkable evidence.** [EviBound
   (arXiv:2511.05524)](https://ar5iv.labs.arxiv.org/html/2511.05524) and
@@ -115,7 +115,7 @@ fl verify --state-dir ~/.research-ledger
 | `verify` | Recompute the hash chain of the whole ledger; detects any edit, insertion, or reordering |
 | `version` | Print version |
 
-Global flag: `--state-dir` on every stateful command (default: none — the
+Global flag: `--state-dir` on every stateful command (default: none 鈥?the
 ledger path is always explicit, so a `git add .` can never sweep it into
 version control).
 
@@ -135,8 +135,7 @@ event:
 ```
 
 `verify` recomputes every `event_hash` and checks each `prev_hash` link.
-**Any tampering — editing a reason, deleting a line, reordering events —
-breaks the chain at a specific line number.**
+**Any tampering 鈥?editing a reason, deleting a line, reordering events 鈥?breaks the chain at a specific line number.**
 
 ## Falsification reports
 
@@ -146,22 +145,20 @@ protocol deviation, effect CI, cost sensitivity, ...). The contract:
 
 - schema: [`schema/falsification-report.schema.json`](https://github.com/foolproof-labs/falsification-ledger/blob/main/schema/falsification-report.schema.json)
   (draft 2020-12, `additionalProperties: false`, fail-closed);
-- content ID: `sha256:` over `domain-prefix || 0x00 || canonical JSON` —
-  the same report always yields the same ID, a one-field change yields a
+- content ID: `sha256:` over `domain-prefix || 0x00 || canonical JSON` 鈥?  the same report always yields the same ID, a one-field change yields a
   different ID;
 - evidence status (fail-closed for gates):
-  - `valid` — conformant, conclusion `not_falsified`, consistency intact;
-  - `invalid` — non-conformant, or conclusion `falsified`, or explicitly
+  - `valid` 鈥?conformant, conclusion `not_falsified`, consistency intact;
+  - `invalid` 鈥?non-conformant, or conclusion `falsified`, or explicitly
     inconsistent;
-  - `missing` — conclusion `inconclusive`: treated as *absent* evidence.
+  - `missing` 鈥?conclusion `inconclusive`: treated as *absent* evidence.
 
 ## Verification model
 
 `fl verify` is the tamper-evidence layer: it re-derives the entire chain
 from the file bytes and reports the first bad line. Combined with
 `preregister` (frozen expectations) and `submit` (content-addressed
-evidence), a research pipeline can prove to itself — and to reviewers —
-that the expectation existed before the evidence did. Nothing here trades,
+evidence), a research pipeline can prove to itself 鈥?and to reviewers 鈥?that the expectation existed before the evidence did. Nothing here trades,
 prices, or decides.
 
 ## Development
@@ -176,11 +173,23 @@ and 3.12. Issues are handled on weekends; pull requests are welcome.
 
 ## Related work
 
-- [Olken (2015), Promises and Perils of Pre-Analysis Plans](https://www.aeaweb.org/articles?id=10.1257/jep.29.3.61) — the economics of freezing expectations
-- [Banerjee & Duflo, In Praise of Moderation](https://www.semanticscholar.org/paper/05ecf99a05419f0a268fe885be11a2cf4a8dbd46) — layered pre-registration
-- [López de Prado (2023), Causal Factor Investing](https://www.cambridge.org/core/elements/causal-factor-investing/9AFE270D7099B787B8FD4F4CBADE0C6E) — can factor investing become scientific?
-- [EviBound: Evidence-Bound Autonomous Research (arXiv:2511.05524)](https://ar5iv.labs.arxiv.org/html/2511.05524) — governance for agentic research
-- [ECLIPSE v2.0: A Systematic Falsification Framework](https://ideas.repec.org/p/osf/metaar/z3fke_v1.html) — enforce falsifiability integrity
+- [Olken (2015), Promises and Perils of Pre-Analysis Plans](https://www.aeaweb.org/articles?id=10.1257/jep.29.3.61) 鈥?the economics of freezing expectations
+- [Banerjee & Duflo, In Praise of Moderation](https://www.semanticscholar.org/paper/05ecf99a05419f0a268fe885be11a2cf4a8dbd46) 鈥?layered pre-registration
+- [L贸pez de Prado (2023), Causal Factor Investing](https://www.cambridge.org/core/elements/causal-factor-investing/9AFE270D7099B787B8FD4F4CBADE0C6E) 鈥?can factor investing become scientific?
+- [EviBound: Evidence-Bound Autonomous Research (arXiv:2511.05524)](https://ar5iv.labs.arxiv.org/html/2511.05524) 鈥?governance for agentic research
+- [ECLIPSE v2.0: A Systematic Falsification Framework](https://ideas.repec.org/p/osf/metaar/z3fke_v1.html) 鈥?enforce falsifiability integrity
+
+## Project family
+
+Part of [Foolproof Labs](https://github.com/foolproof-labs) — a toolchain
+against self-deception in quantitative research:
+
+- [pit-adjuster](https://github.com/foolproof-labs/pit-adjuster) — PIT back-adjustment with static forward-adjustment drift detection
+- [falsification-ledger](https://github.com/foolproof-labs/falsification-ledger) — pre-registration and falsification ledger
+- [factor-qc](https://github.com/foolproof-labs/factor-qc) — fail-closed backtest quality gate
+- [lesson-book](https://github.com/foolproof-labs/lesson-book) — tuition memory for traders
+- [lookahead-free](https://github.com/foolproof-labs/lookahead-free) — verifiable look-ahead-freedom checks
+- [ashare-data-immunity](https://github.com/foolproof-labs/ashare-data-immunity) — data immunity for A-share daily bars
 
 ## License
 
