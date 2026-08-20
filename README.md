@@ -1,5 +1,10 @@
 # falsification-ledger
 
+![PyPI version](https://img.shields.io/pypi/v/falsification-ledger.svg)
+![PyPI downloads](https://img.shields.io/pypi/dm/falsification-ledger.svg)
+![CI](https://github.com/foolproof-labs/falsification-ledger/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 ## 中文说明
 
 `falsification-ledger` 是量化研究的可验证实验记录本，也适用于 A 股回测。
