@@ -10,6 +10,13 @@ macOS.
 production research pipeline, but this standalone package is new: expect the
 CLI and schemas to shift before v1.0.
 
+## 中文简介
+
+`falsification-ledger` 是量化研究的可验证实验记录本，也适用于 A 股回测。
+研究开始前先登记假设，以及什么证据会推翻它；之后把证据写入追加式、
+哈希串联的记录，再进行一次性裁决和命中率统计。它帮助减少事后挑选结果，
+但不替代数据审计、统计检验或人工判断。
+
 ## Why this exists
 
 Quantitative research has a self-deception problem: you test 500 factor
